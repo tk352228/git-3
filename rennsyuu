@@ -1,0 +1,303 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>観光スポット紹介アプリ｜ランディングページ</title>
+<meta name="description" content="観光スポット紹介アプリの紹介ページ。アプリの概要、特徴、サンプルスポット、よくある質問、チーム、連絡先を掲載。">
+<style>
+:root{
+--bg: #0f172a; /* slate-900 */
+--card: #0b1224; /* slightly lighter than bg */
+--ink: #e5e7eb; /* gray-200 */
+--muted: #9ca3af; /* gray-400 */
+--brand: #22d3ee; /* cyan-400 */
+--brand-2: #a78bfa; /* violet-400 */
+--accent: #34d399; /* emerald-400 */
+--radius: 18px;
+--shadow: 0 10px 30px rgba(0,0,0,.35);
+--maxw: 1120px;
+}
+*{box-sizing:border-box}
+html,body{margin:0;padding:0;background:radial-gradient(1200px 600px at 80% -10%, rgba(34,211,238,.15), transparent 60%),
+radial-gradient(900px 500px at 10% 0%, rgba(167,139,250,.18), transparent 60%),
+linear-gradient(180deg, #0b1023 0%, #0f172a 60%);
+color:var(--ink); font-family: system-ui, -apple-system, Segoe UI, Roboto, "Hiragino Kaku Gothic ProN", "Yu Gothic", sans-serif; line-height:1.65}
+a{color:inherit}
+.wrap{max-width:var(--maxw); margin-inline:auto; padding:0 20px}
+header{position:sticky; top:0; backdrop-filter:saturate(180%) blur(10px);
+background:linear-gradient(180deg, rgba(11,16,35,.9), rgba(11,16,35,.6)); border-bottom:1px solid rgba(255,255,255,.06); z-index:50}
+.nav{display:flex; align-items:center; justify-content:space-between; height:64px}
+.logo{display:flex; align-items:center; gap:10px; font-weight:700; letter-spacing:.3px}
+.logo-badge{width:30px; height:30px; border-radius:9px; background:linear-gradient(135deg, var(--brand), var(--brand-2)); box-shadow:var(--shadow)}
+.nav a.btn{padding:10px 14px; border-radius:10px; border:1px solid rgba(255,255,255,.12)}
+
+.hero{padding:84px 0 56px}
+.hero h1{font-size:clamp(28px, 4vw, 44px); margin:0 0 12px; line-height:1.2}
+.hero p.lead{color:var(--muted); font-size:clamp(15px, 2vw, 18px); margin:0 0 28px}
+.cta{display:flex; gap:12px; flex-wrap:wrap}
+.btn{display:inline-flex; align-items:center; gap:8px; padding:12px 18px; border-radius:12px; font-weight:600; text-decoration:none; transition:.2s transform, .2s opacity}
+.btn:hover{transform:translateY(-1px); opacity:.95}
+.btn-primary{background:linear-gradient(135deg, var(--brand), var(--brand-2)); color:#00111a}
+.btn-outline{border:1px solid rgba(255,255,255,.16)}
+
+.preview{margin-top:36px; background:linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.02)); border:1px solid rgba(255,255,255,.1); border-radius:var(--radius); box-shadow:var(--shadow)}
+.preview-inner{aspect-ratio: 16/9; width:100%; border-radius:var(--radius); background:
+linear-gradient(180deg, rgba(255,255,255,.05), rgba(255,255,255,.0)),
+url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="675"><defs><linearGradient id="g" x1="0" x2="1"><stop offset="0%" stop-color="%2322d3ee"/><stop offset="100%" stop-color="%23a78bfa"/></linearGradient></defs><rect width="100%" height="100%" fill="%230b1224"/><g opacity="0.5"><circle cx="150" cy="120" r="70" fill="url(%23g)"/><circle cx="430" cy="300" r="90" fill="url(%23g)"/><circle cx="980" cy="220" r="110" fill="url(%23g)"/></g><g opacity="0.6" fill="none" stroke="white" stroke-opacity="0.25"><rect x="80" y="70" width="1040" height="535" rx="16"/><rect x="120" y="120" width="960" height="200" rx="14"/><rect x="120" y="340" width="300" height="220" rx="14"/><rect x="440" y="340" width="300" height="220" rx="14"/><rect x="760" y="340" width="320" height="220" rx="14"/></g></svg>') center/cover no-repeat;
+}
+
+section{padding:64px 0}
+h2{font-size:clamp(22px, 3vw, 32px); margin:0 0 10px}
+.muted{color:var(--muted)}
+
+.features{display:grid; grid-template-columns:repeat(3,1fr); gap:16px}
+.card{background:linear-gradient(180deg, rgba(255,255,255,.04), rgba(255,255,255,.02)); border:1px solid rgba(255,255,255,.08); border-radius:var(--radius); padding:18px; box-shadow:var(--shadow)}
+.card h3{margin:0 0 6px; font-size:18px}
+
+.grid{display:grid; grid-template-columns:repeat(3,1fr); gap:16px}
+.spot{overflow:hidden}
+.spot-img{aspect-ratio: 16/10; width:100%; border-radius:14px; background:linear-gradient(135deg, rgba(34,211,238,.25), rgba(167,139,250,.25)); border:1px solid rgba(255,255,255,.1)}
+.spot h4{margin:10px 0 6px}
+.tag{display:inline-block; padding:3px 8px; border:1px solid rgba(255,255,255,.18); border-radius:999px; font-size:12px; color:var(--muted)}
+
+.faq details{background:linear-gradient(180deg, rgba(255,255,255,.04), rgba(255,255,255,.02)); border:1px solid rgba(255,255,255,.08); border-radius:var(--radius); padding:14px 16px}
+.faq details+details{margin-top:10px}
+summary{cursor:pointer; font-weight:600}
+
+.team{display:grid; grid-template-columns:repeat(3,1fr); gap:16px}
+.person{display:flex; gap:12px; align-items:center; background:linear-gradient(180deg, rgba(255,255,255,.04), rgba(255,255,255,.02)); border:1px solid rgba(255,255,255,.08); border-radius:var(--radius); padding:12px}
+.avatar{width:52px; height:52px; border-radius:50%; background:linear-gradient(135deg, var(--brand), var(--brand-2))}
+
+form{display:grid; gap:10px}
+input, textarea{width:100%; padding:12px 14px; color:var(--ink); background:#0b1224; border:1px solid rgba(255,255,255,.12); border-radius:12px}
+textarea{min-height:120px; resize:vertical}
+
+footer{padding:32px 0 60px; color:var(--muted)}
+
+@media (max-width: 900px){
+.features, .grid, .team{grid-template-columns:1fr 1fr}
+}
+@media (max-width: 640px){
+.features, .grid, .team{grid-template-columns:1fr}
+.nav a.btn{display:none}
+.hero{padding-top:72px}
+}
+
+/* === Phone mock styles (スマホレイアウト) === */
+.phones{display:grid; grid-template-columns:1fr 1fr; gap:16px; margin-top:24px}
+.phone{background:var(--card); border:2px solid rgba(255,255,255,.18); border-radius:28px; padding:12px; position:relative; min-height:540px; box-shadow:var(--shadow)}
+.screen{height:100%; border:2px solid rgba(255,255,255,.22); border-radius:22px; padding:12px; display:flex; flex-direction:column; gap:12px}
+.appbar{display:flex; align-items:center; justify-content:space-between}
+.app-title{padding:6px 12px; border:2px solid rgba(255,255,255,.28); border-radius:12px; font-weight:700; letter-spacing:.2px}
+.burger{width:26px; height:18px; position:relative}
+.burger span{position:absolute; left:0; right:0; height:3px; background:var(--ink); border-radius:2px}
+.burger span:nth-child(1){top:0}
+.burger span:nth-child(2){top:7px}
+.burger span:nth-child(3){bottom:0}
+.photo{flex:1; min-height:380px; border:2px solid rgba(255,255,255,.22); border-radius:16px; background:linear-gradient(135deg, rgba(34,211,238,.25), rgba(167,139,250,.25)); display:block}
+
+.panel-card{background:linear-gradient(180deg, rgba(255,255,255,.05), rgba(255,255,255,.02)); border:2px solid rgba(255,255,255,.18); border-radius:14px; padding:12px}
+.register{display:block; text-align:center; padding:12px 14px; border-radius:12px; font-weight:700; text-decoration:none; background:linear-gradient(135deg, var(--brand), var(--brand-2)); color:#00111a; border:2px solid rgba(255,255,255,.2)}
+.creator-list{display:grid; gap:8px}
+.creator-btn{display:block; padding:10px 12px; border-radius:12px; text-align:center; border:2px solid rgba(255,255,255,.22); background:#0b1224}
+.to-top{position:absolute; right:16px; bottom:16px; width:44px; height:44px; display:grid; place-items:center; border-radius:50%; border:2px solid rgba(255,255,255,.28); background:linear-gradient(135deg, var(--brand), var(--brand-2)); color:#00111a; font-weight:900; text-decoration:none}
+
+@media (max-width: 1024px){ .phones{grid-template-columns:1fr} }
+</style>
+</head>
+<body id="top">
+<!-- ===== Header ===== -->
+<header>
+<div class="wrap nav">
+<div class="logo"><span class="logo-badge"></span> 観光スポット紹介アプリ</div>
+<nav>
+<a class="btn" href="#about">概要</a>
+<a class="btn" href="#features">特徴</a>
+<a class="btn" href="#spots">スポット</a>
+<a class="btn btn-primary" href="#contact">お問い合わせ</a>
+</nav>
+</div>
+</header>
+
+<!-- ===== Hero ===== -->
+<section class="hero">
+<div class="wrap">
+<h1>旅の「行きたい」が、もっと見つかる。</h1>
+<p class="lead">地域の魅力をギュッと収集して、見やすく・比べやすく。<br>本アプリは「地図×写真×レビュー」で直感的に観光スポットを探せる体験を目指しています。</p>
+<div class="cta">
+<a class="btn btn-primary" href="#spots">スポットを見る</a>
+<a class="btn btn-outline" href="#features">機能を見る</a>
+</div>
+<div class="phones" role="img" aria-label="スマホUIモック">
+<!-- 左：メイン画面 -->
+<div class="phone">
+<div class="screen">
+<div class="appbar">
+<div class="app-title">アプリタイトル</div>
+<div class="burger" aria-hidden="true"><span></span><span></span><span></span></div>
+</div>
+<div class="photo" title="観光スポットの写真（ダミー）"></div>
+</div>
+</div>
+<!-- 右：情報パネル -->
+<div class="phone">
+<div class="screen">
+<div class="panel-card">
+<strong>アプリ概要</strong>
+<p class="muted" style="margin:.4rem 0 0">地域の観光スポットを写真と地図で直感的に探せるアプリです。お気に入りやルート共有にも対応予定。</p>
+</div>
+<a class="register" href="#contact">登録（ダミー）</a>
+<div class="panel-card">
+<strong>製作者</strong>
+<div class="creator-list" style="margin-top:8px">
+<a class="creator-btn" href="#">Creator 1</a>
+<a class="creator-btn" href="#">Creator 2</a>
+<a class="creator-btn" href="#">Creator 3</a>
+<a class="creator-btn" href="#">Creator 4</a>
+</div>
+</div>
+<a class="to-top" href="#top" title="ページ上部へ">↑</a>
+</div>
+</div>
+</div></div>
+</div>
+</section>
+
+<!-- ===== About ===== -->
+<section id="about">
+<div class="wrap">
+<h2>このページについて</h2>
+<p class="muted">※ 本ページは「静的（スタティック）ページ」です。まずはアプリの外側となる紹介ページとして制作します。データベースやログインなどの機能は後日実装予定です。</p>
+</div>
+</section>
+
+<!-- ===== Features ===== -->
+<section id="features">
+<div class="wrap">
+<h2>主な特徴</h2>
+<div class="features">
+<div class="card">
+<h3>① 直感的な探し方</h3>
+<p class="muted">地図と写真で「場所から探す」「見た目で選ぶ」を両立。タグ検索にも対応予定です。</p>
+</div>
+<div class="card">
+<h3>② しぼり込みが簡単</h3>
+<p class="muted">家族向け・雨でもOK・バリアフリーなど、用途に合わせたフィルタを予定しています。</p>
+</div>
+<div class="card">
+<h3>③ 旅の計画に強い</h3>
+<p class="muted">お気に入り登録やルート共有に対応予定。旅行の下調べから当日の移動までワンストップ。</p>
+</div>
+</div>
+</div>
+</section>
+
+<!-- ===== Sample Spots ===== -->
+<section id="spots">
+<div class="wrap">
+<h2>サンプル・スポット</h2>
+<p class="muted">後日データベースと接続して動的に表示します。今日はダミー表示のままでOKです。</p>
+<div class="grid">
+<article class="spot card">
+<div class="spot-img"></div>
+<h4>海辺の展望台</h4>
+<span class="tag">夕日◎</span>
+<p class="muted">水平線に沈む夕日が人気のフォトスポット。家族連れにもおすすめ。</p>
+</article>
+<article class="spot card">
+<div class="spot-img"></div>
+<h4>古都の路地裏</h4>
+<span class="tag">歴史/カフェ</span>
+<p class="muted">小さなカフェや工芸店が点在。歩きやすい石畳が続きます。</p>
+</article>
+<article class="spot card">
+<div class="spot-img"></div>
+<h4>渓谷トレイル</h4>
+<span class="tag">自然/初心者OK</span>
+<p class="muted">緩やかなコースで初心者も安心。四季折々の景観が魅力。</p>
+</article>
+</div>
+</div>
+</section>
+
+<!-- ===== FAQ ===== -->
+<section id="faq" class="faq">
+<div class="wrap">
+<h2>よくある質問</h2>
+<details>
+<summary>Q. ログイン機能はありますか？</summary>
+<div class="muted">A. 今日は未対応です。明日以降の回で追加実装予定です。</div>
+</details>
+<details>
+<summary>Q. スポット情報はどこから取得しますか？</summary>
+<div class="muted">A. 初期は手動登録（管理画面）を想定。今後オープンデータ/API連携も検討します。</div>
+</details>
+<details>
+<summary>Q. マップ表示は可能ですか？</summary>
+<div class="muted">A. 可能です。静的ページではダミー、後日JavaScript SDKで実装予定です。</div>
+</details>
+</div>
+</section>
+
+<!-- ===== Team ===== -->
+<section id="team">
+<div class="wrap">
+<h2>チーム</h2>
+<div class="team">
+<div class="person"><div class="avatar"></div><div><strong>Team A</strong><div class="muted">フロント担当</div></div></div>
+<div class="person"><div class="avatar"></div><div><strong>Team B</strong><div class="muted">データ/設計</div></div></div>
+<div class="person"><div class="avatar"></div><div><strong>Team C</strong><div class="muted">企画/編集</div></div></div>
+</div>
+</div>
+</section>
+
+<!-- ===== Contact ===== -->
+<section id="contact">
+<div class="wrap">
+<h2>お問い合わせ</h2>
+<p class="muted">連絡用のダミーフォームです（送信処理は未接続）。</p>
+<form onsubmit="event.preventDefault(); alert('送信はダミーです。後日接続します。');">
+<input type="text" placeholder="お名前" required>
+<input type="email" placeholder="メールアドレス" required>
+<textarea placeholder="お問い合わせ内容"></textarea>
+<button class="btn btn-primary" type="submit">送信（ダミー）</button>
+</form>
+</div>
+</section>
+
+<footer>
+<div class="wrap">
+<div>© <span id="y"></span> 観光スポット紹介アプリ</div>
+</div>
+</footer>
+
+<script>
+// 年表示
+document.getElementById('y').textContent = new Date().getFullYear();
+// スムーススクロール
+document.querySelectorAll('a[href^="#"]').forEach(a=>{
+a.addEventListener('click', e=>{
+const id = a.getAttribute('href');
+if(id.length>1){ e.preventDefault(); document.querySelector(id)?.scrollIntoView({behavior:'smooth'}); }
+});
+});
+</script>
+
+<!--
+==========================
+作業メモ（本日やること）
+==========================
+1) この index.html をそのまま使ってOK。文言・色・見出しを各チームで調整。
+2) 画像が必要なら .spot-img を <img src="..."> に置き換え可能（著作権に注意）。
+3) GitHub で公開する場合：
+- リポジトリ直下に index.html を保存
+- Settings → Pages → Branch: main / folder: root を選び Save
+- 表示された URL にアクセス（反映に数分かかる場合あり）
+4) 追加したいセクション例：
+- 体験談/レビュー、地図のモック、タイムライン、料金（将来）など
+5) 明日以降の実装予定：
+- ログイン、スポットCRUD、地図SDK、検索フィルタ、GitHub Actionsで自動デプロイ
+-->
+</body>
+</html>
