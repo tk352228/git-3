@@ -151,7 +151,7 @@ footer{padding:32px 0 60px; color:var(--muted)}
 <div class="panel-card">
 <strong>製作者</strong>
 <div class="creator-list" style="margin-top:8px">
-<a class="creator-btn" href="#">きっころ</a>
+<a class="creator-btn" href="#">Creator 1</a>
 <a class="creator-btn" href="#">Creator 2</a>
 <a class="creator-btn" href="#">まさかず</a>
 <a class="creator-btn" href="#">うっちゃり</a>
